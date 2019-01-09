@@ -42,6 +42,8 @@ urlpatterns = patterns(
 
     # main website views
     url(r'^$', 'onadata.apps.main.views.home'),
+    url(r"^(?P<username>\w+)/assigned",
+        'onadata.apps.logger.views.submissions'),
     url(r'^tutorial/$', 'onadata.apps.main.views.tutorial', name='tutorial'),
     url(r'^about-us/$', 'onadata.apps.main.views.about_us', name='about-us'),
     url(r'^getting_started/$', 'onadata.apps.main.views.getting_started',
@@ -173,6 +175,8 @@ urlpatterns = patterns(
         name='thank_you_submission'),
     url(r"^(?P<username>\w+)/forms/(?P<id_string>[^/]+)/edit-data/(?P<data_id>"
         "\d+)$", 'onadata.apps.logger.views.edit_data', name='edit_data'),
+    url(r"^(?P<username>\w+)/forms/(?P<id_string>[^/]+)/view-data/(?P<data_id>"
+        "\d+)$", 'onadata.apps.logger.views.view_data', name='view_data'),
     url(r"^(?P<username>\w+)/forms/(?P<id_string>[^/]+)/view-data",
         'onadata.apps.viewer.views.data_view'),
     url(r"^(?P<username>\w+)/exports/(?P<id_string>[^/]+)/(?P<export_type>\w+)"

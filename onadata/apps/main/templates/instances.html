@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submissions</title>
+</head>
+<body>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Instance</th>
+      <th scope="col">Form Name</th>
+      <th scope="col">Sender</th>
+      <th scope="col">View</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for instance in object_list %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{instance.id}}</td>
+      <td>{{instance.xform.title}}</td>
+      <td>{{instance.user}}</td>
+      <td><a  target="_blank" href="{% url 'onadata.apps.logger.views.edit_data' instance.xform.user.username instance.xform.id_string instance.id  %}">Edit</a></td>
+      <td><a target="_blank" href="{% url 'onadata.apps.logger.views.view_data' instance.xform.user.username instance.xform.id_string instance.id  %}">View</a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
